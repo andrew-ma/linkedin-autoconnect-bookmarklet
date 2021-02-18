@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkedin Autoconnect</title>
+  </head>
+  <body>
+      <p>Drag this link
+        <a
+        href="javascript:var%20%24jscomp%3D%24jscomp%7C%7C%7B%7D%3B%24jscomp.scope%3D%7B%7D%3B%24jscomp.createTemplateTagFirstArg%3Dfunction(a)%7Breturn%20a.raw%3Da%7D%3B%24jscomp.createTemplateTagFirstArgWithRaw%3Dfunction(a%2Cb)%7Ba.raw%3Db%3Breturn%20a%7D%3Bvar%20lastSendTimeout%3Dnull%2ClastConnectTimeout%3Dnull%2CuseRandomConnectClickTime%3D!1%2CconnectMissesBeforeMovingToNextPage%3D3%2CcurrentConnectMisses%3DconnectMissesBeforeMovingToNextPage%2CminimumConnectWaitTime%3D700%2CmaximumConnectWaitTime%3D2E3%2CgoToNextPage%3Dfunction()%7Bwindow.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%3Bvar%20a%3Ddocument.getElementsByClassName(%22artdeco-pagination__button--next%22)%3Ba.length%3F(a%5B0%5D.click()%2Cconsole.log(%22Clicked%20next%20button%22)%2CsetTimeout(findConnectButton%2C300))%3Aconsole.log(%22No%20Next%20button%22)%7D%2CnumTriesConnectStaySame%3D3%2CcurNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull%2CfindConnectButton%3Dfunction()%7Bvar%20a%3Ddocument.getElementsByClassName(%22artdeco-button--2%22)%3Ba%3DArray.from(a).filter(function(c)%7Breturn!c.classList.contains(%22artdeco-button--muted%22)%26%26%22Connect%22%3D%3D%3Dc.innerText%7D)%3Bvar%20b%3D700%3BuseRandomConnectClickTime%26%26(b%3DMath.floor(Math.random()*(maximumConnectWaitTime-minimumConnectWaitTime)%2B1)%2BminimumConnectWaitTime)%3Ba.length%3F(console.log(a.length%2B%22%20connect%20buttons%22)%2Ca%5B0%5D.click()%2CclearTimeout(lastSendTimeout)%2CfindSendButton()%2Cdocument.getElementsByClassName(%22artdeco-button%20ip-fuse-limit-alert__primary-action%22).length%3F(clearTimeout(lastConnectTimeout)%2Calert(%22Reached%20Connect%20Invitation%20Limit!%22))%3A(a.length%3D%3DlastConnectButtonsLength%3FcurNumTriesConnectStaySame--%3A(curNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull)%2C0%3E%3DcurNumTriesConnectStaySame%3F(goToNextPage()%2CcurNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull)%3A(lastConnectTimeout%3DsetTimeout(findConnectButton%2Cb)%2CcurNumTriesConnectStaySame--%2ClastConnectButtonsLength%3Da.length)))%3A0%3CcurrentConnectMisses%3F(window.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%2ClastConnectTimeout%3DsetTimeout(findConnectButton%2Cb)%2CcurrentConnectMisses--)%3A(goToNextPage()%2CcurrentConnectMisses%3DconnectMissesBeforeMovingToNextPage)%7D%2CfindSendButton%3Dfunction()%7Bvar%20a%3Ddocument.getElementsByClassName(%22ml1%20artdeco-button%22)%3Ba.length%3Fa%5B0%5D.click()%3AlastSendTimeout%3DsetTimeout(findSendButton%2C300)%7D%3Bwindow.scrollTo(0%2Cdocument.body.scrollHeight)%3BfindConnectButton()%3Bvoid+0"
+        target="_blank"
+        class="btn btn-primary btn-block"
+        ><i class="fa fa-external-link"></i>
+        Linkedin Autoconnect
+      </a> to your bookmark bar
+      <p>Go to <a href="https://www.linkedin.com/search/results/people/?keywords=intern&origin=GLOBAL_SEARCH_HEADER">Linkedin Search Results Page</a> and click on the new bookmark</p>
+      </p>
+
+  </body>
+</html>

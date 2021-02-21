@@ -1,22 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Linkedin Autoconnect</title>
-  </head>
-  <body>
-      <p>Drag this link
-        <a
-        href="javascript:var%20%24jscomp%3D%24jscomp%7C%7C%7B%7D%3B%24jscomp.scope%3D%7B%7D%3B%24jscomp.createTemplateTagFirstArg%3Dfunction(a)%7Breturn%20a.raw%3Da%7D%3B%24jscomp.createTemplateTagFirstArgWithRaw%3Dfunction(a%2Cb)%7Ba.raw%3Db%3Breturn%20a%7D%3Bvar%20lastSendTimeout%3Dnull%2ClastConnectTimeout%3Dnull%2CuseRandomConnectClickTime%3D!1%2CconnectMissesBeforeMovingToNextPage%3D3%2CcurrentConnectMisses%3DconnectMissesBeforeMovingToNextPage%2CminimumConnectWaitTime%3D700%2CmaximumConnectWaitTime%3D2E3%2CgoToNextPage%3Dfunction()%7Bwindow.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%3Bvar%20a%3Ddocument.getElementsByClassName(%22artdeco-pagination__button--next%22)%3Ba.length%3F(a%5B0%5D.click()%2Cconsole.log(%22Clicked%20next%20button%22)%2CsetTimeout(findConnectButton%2C300))%3Aconsole.log(%22No%20Next%20button%22)%7D%2CnumTriesConnectStaySame%3D3%2CcurNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull%2CfindConnectButton%3Dfunction()%7Bvar%20a%3Ddocument.getElementsByClassName(%22artdeco-button--2%22)%3Ba%3DArray.from(a).filter(function(c)%7Breturn!c.classList.contains(%22artdeco-button--muted%22)%26%26%22Connect%22%3D%3D%3Dc.innerText%7D)%3Bvar%20b%3D700%3BuseRandomConnectClickTime%26%26(b%3DMath.floor(Math.random()*(maximumConnectWaitTime-minimumConnectWaitTime)%2B1)%2BminimumConnectWaitTime)%3Ba.length%3F(console.log(a.length%2B%22%20connect%20buttons%22)%2Ca%5B0%5D.click()%2CclearTimeout(lastSendTimeout)%2CfindSendButton()%2Cdocument.getElementsByClassName(%22artdeco-button%20ip-fuse-limit-alert__primary-action%22).length%3F(clearTimeout(lastConnectTimeout)%2Calert(%22Reached%20Connect%20Invitation%20Limit!%22))%3A(a.length%3D%3DlastConnectButtonsLength%3FcurNumTriesConnectStaySame--%3A(curNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull)%2C0%3E%3DcurNumTriesConnectStaySame%3F(goToNextPage()%2CcurNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull)%3A(lastConnectTimeout%3DsetTimeout(findConnectButton%2Cb)%2CcurNumTriesConnectStaySame--%2ClastConnectButtonsLength%3Da.length)))%3A0%3CcurrentConnectMisses%3F(window.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%2ClastConnectTimeout%3DsetTimeout(findConnectButton%2Cb)%2CcurrentConnectMisses--)%3A(goToNextPage()%2CcurrentConnectMisses%3DconnectMissesBeforeMovingToNextPage)%7D%2CfindSendButton%3Dfunction()%7Bvar%20a%3Ddocument.getElementsByClassName(%22ml1%20artdeco-button%22)%3Ba.length%3Fa%5B0%5D.click()%3AlastSendTimeout%3DsetTimeout(findSendButton%2C300)%7D%3Bwindow.scrollTo(0%2Cdocument.body.scrollHeight)%3BfindConnectButton()%3Bvoid+0"
-        target="_blank"
-        class="btn btn-primary btn-block"
-        ><i class="fa fa-external-link"></i>
-        Linkedin Autoconnect
-      </a> to your bookmark bar
-      <p>Go to <a href="https://www.linkedin.com/search/results/people/?keywords=intern&origin=GLOBAL_SEARCH_HEADER">Linkedin Search Results Page</a> and click on the new bookmark</p>
-      </p>
 
-  </body>
+<head>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⏩Linkedin Autoconnect</title>
+  <style>
+    li,
+    p {
+      font-size: large;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    body {
+      margin: 30px;
+    }
+
+    a.button {
+      border: 3px solid green;
+      border-radius: 8px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+    }
+
+    #bookmarklet_btn {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: medium;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Instructions</h2>
+  <ol>
+    <li>
+      <p>Drag this button
+        <a class="button"
+          href="javascript:var%20%24jscomp%3D%24jscomp%7C%7C%7B%7D%3B%24jscomp.scope%3D%7B%7D%3B%24jscomp.createTemplateTagFirstArg%3Dfunction(a)%7Breturn%20a.raw%3Da%7D%3B%24jscomp.createTemplateTagFirstArgWithRaw%3Dfunction(a%2Cb)%7Ba.raw%3Db%3Breturn%20a%7D%3B%0Avar%20lastSendTimeout%3Dnull%2ClastConnectTimeout%3Dnull%2CuseRandomConnectClickTime%3D!0%2CconnectMissesBeforeMovingToNextPage%3D3%2CcurrentConnectMisses%3DconnectMissesBeforeMovingToNextPage%2CminimumConnectWaitTime%3D1E3%2CmaximumConnectWaitTime%3D2500%2CnumTriesNextPage%3D3%2CcurNumTriesNextPage%3DnumTriesNextPage%2CgoToNextPage%3Dfunction()%7Bwindow.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%3Bif(0%3E%3DcurNumTriesNextPage)alert(%22No%20Next%20button%20detected.%20%20Rerun%20script%20after%20zooming%20out%22)%3Belse%7Bvar%20a%3Ddocument.getElementsByClassName(%22artdeco-pagination__button--next%22)%3B%0Aa.length%3F(curNumTriesNextPage%3DnumTriesNextPage%2Cconsole.log(%22Click%20next%20button%22)%2Ca%5B0%5D.click()%2CsetTimeout(findConnectButton%2CminimumConnectWaitTime))%3AcurNumTriesNextPage--%7D%7D%2CnumTriesConnectStaySame%3D3%2CcurNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull%2CfindConnectButton%3Dfunction()%7Bvar%20a%3Ddocument.getElementsByClassName(%22artdeco-button--2%22)%3Ba%3DArray.from(a).filter(function(c)%7Breturn!c.classList.contains(%22artdeco-button--muted%22)%26%26%22Connect%22%3D%3D%3Dc.innerText%7D)%3Bvar%20b%3D700%3BuseRandomConnectClickTime%26%26%0A(b%3DMath.floor(Math.random()*(maximumConnectWaitTime-minimumConnectWaitTime)%2B1)%2BminimumConnectWaitTime)%3Ba.length%3F(console.log(a.length%2B%22%20connect%20buttons%22)%2Ca%5B0%5D.click()%2CclearTimeout(lastSendTimeout)%2CfindSendButton()%2Cdocument.getElementsByClassName(%22artdeco-button%20ip-fuse-limit-alert__primary-action%22).length%3F(clearTimeout(lastConnectTimeout)%2Calert(%22Reached%20Connect%20Invitation%20Limit!%20Stopped%20script%22))%3A(a.length%3D%3DlastConnectButtonsLength%3FcurNumTriesConnectStaySame--%3A(curNumTriesConnectStaySame%3DnumTriesConnectStaySame%2C%0AlastConnectButtonsLength%3Dnull)%2C0%3E%3DcurNumTriesConnectStaySame%3F(goToNextPage()%2CcurNumTriesConnectStaySame%3DnumTriesConnectStaySame%2ClastConnectButtonsLength%3Dnull)%3A(lastConnectTimeout%3DsetTimeout(findConnectButton%2Cb)%2CcurNumTriesConnectStaySame--%2ClastConnectButtonsLength%3Da.length)))%3A0%3CcurrentConnectMisses%3F(window.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%2ClastConnectTimeout%3DsetTimeout(findConnectButton%2Cb)%2CcurrentConnectMisses--)%3A(goToNextPage()%2CcurrentConnectMisses%3DconnectMissesBeforeMovingToNextPage)%7D%2C%0AfindSendButton%3Dfunction()%7Bvar%20a%3Ddocument.getElementsByClassName(%22ml1%20artdeco-button%22)%3Ba.length%3Fa%5B0%5D.click()%3AlastSendTimeout%3DsetTimeout(findSendButton%2C300)%7D%2Clinkedin_search_regexp%3D%2Fhttp%5Bs%5D%3F%3A%5B%2F%5D%5B%2F%5D%5Ba-zA-Z%5D%2B.linkedin.com%5B%2F%5Dsearch%5B%2F%5Dresults%2F%3B%0Anull%3D%3D%3Dwindow.location.href.match(linkedin_search_regexp)%3Falert(%22Can't%20run%20Linkedin%20Autoconnect%20script%20on%20pages%20other%20than%20Linkedin%20Search%20Results%22)%3A(alert(%22Zoom%20out%20with%20Ctrl%2BMinus%20repeatedly%20until%20the%20Next%20page%20button%20is%20visible%2C%20before%20pressing%20OK%22)%2Cwindow.scrollTo(%7Btop%3Adocument.body.scrollHeight%2Cbehavior%3A%22smooth%22%7D)%2CfindConnectButton())%3B"
+          target="">
+          ⏩Linkedin Autoconnect
+        </a>
+        to your bookmark bar
+      </p>
+    </li>
+
+    <li>
+      <p>Click on <a target="_blank"
+          href="https://www.linkedin.com/search/results/people/?keywords=google">https://www.linkedin.com/search/results/people/?keywords=google</a>
+        to go to Linkedin Search.</p>
+    </li>
+    <li>
+      <p>Search for whatever people you wish to connect with in the search bar.</p>
+    </li>
+    <li>
+      <p>Click on the <em>Linkedin Autoconnect</em> bookmarklet you just added in the bookmark bar, and the script
+        should run</p>
+    </li>
+  </ol>
+
+  <h2>Tips</h2>
+  <ul>
+    <li>If you don't see the bookmark bar, press Ctrl+Shift+B in Chrome and Firefox</li>
+    <br />
+    <li>To stop the script, click on the refresh button in your browser</li>
+    <li>To resume the script, click on the <em>Linkedin Autoconnect</em> bookmarklet in the bookmark bar</li>
+    <br />
+    <li>The script should automatically go to the next page, and it will automatically stop when you reach Linkedin's
+      weekly limit for Connect requests</li>
+    <li>If it does not automatically go to the next page, try zooming out the page until the Next Page button is always
+      visible (press Ctrl+Minus repeatedly), and then resume the script by clicking on the bookmarklet</li>
+  </ul>
+
+  <h2>Customize The Script</h2>
+  <textarea id="input_js_code" name="input_js_code" cols="50" rows="10">
+    var lastSendTimeout = null;
+    var lastConnectTimeout = null;
+    
+    var useRandomConnectClickTime = true;
+    var connectMissesBeforeMovingToNextPage = 3;
+    var currentConnectMisses = connectMissesBeforeMovingToNextPage;
+    
+    var minimumConnectWaitTime = 1000;
+    var maximumConnectWaitTime = 2500;
+    
+    var numTriesNextPage = 3;
+    var curNumTriesNextPage = numTriesNextPage;
+    
+    var goToNextPage = () =>
+    {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    
+        if (curNumTriesNextPage <= 0)
+        {
+            alert("No Next button detected.  Rerun script after zooming out");
+            return;
+        }
+    
+        // click on next button
+        let nextButtons = document.getElementsByClassName("artdeco-pagination__button--next");
+        if (nextButtons.length)
+        {
+            curNumTriesNextPage = numTriesNextPage;
+            console.log("Click next button");
+    
+            nextButtons[0].click();
+    
+            setTimeout(findConnectButton, minimumConnectWaitTime);
+        } else
+        {
+            curNumTriesNextPage--;
+        }
+    };
+    
+    // if connect buttons length has stayed the same for X number even after clicking on send button, then go to next page
+    var numTriesConnectStaySame = 3;
+    var curNumTriesConnectStaySame = numTriesConnectStaySame;
+    
+    var lastConnectButtonsLength = null;
+    
+    var findConnectButton = () =>
+    {
+        let allButtons = document.getElementsByClassName("artdeco-button--2");
+        let connectButtons = Array.from(allButtons).filter((el) =>
+        {
+            return !el.classList.contains("artdeco-button--muted") && el.innerText === "Connect"
+        });
+    
+        let connectTimeoutMS = 700;
+        if (useRandomConnectClickTime)
+        {
+            connectTimeoutMS = Math.floor(Math.random() * (maximumConnectWaitTime - minimumConnectWaitTime) + 1) + minimumConnectWaitTime;
+        }
+    
+        if (connectButtons.length)
+        {
+            console.log(`${connectButtons.length} connect buttons`);
+    
+            connectButtons[0].click();
+    
+            clearTimeout(lastSendTimeout);
+            findSendButton();
+    
+            let weeklyInvitationLimitButton = document.getElementsByClassName("artdeco-button ip-fuse-limit-alert__primary-action");
+            if (weeklyInvitationLimitButton.length)
+            {
+                // stop clicking on connect buttons if we reach our weekly connect limit
+                clearTimeout(lastConnectTimeout);
+                alert("Reached Connect Invitation Limit! Stopped script");
+                return;
+            }
+    
+    
+            if (connectButtons.length == lastConnectButtonsLength)
+            {
+                curNumTriesConnectStaySame--;
+            } else
+            {
+                curNumTriesConnectStaySame = numTriesConnectStaySame;
+                lastConnectButtonsLength = null;
+            }
+    
+            if (curNumTriesConnectStaySame <= 0)
+            {
+                //go to next page
+                goToNextPage();
+    
+                curNumTriesConnectStaySame = numTriesConnectStaySame;
+                lastConnectButtonsLength = null;
+            } else
+            {
+                // look and click on next Connect button after connectTimeoutMS
+                lastConnectTimeout = setTimeout(findConnectButton, connectTimeoutMS);
+    
+                curNumTriesConnectStaySame--;
+    
+                lastConnectButtonsLength = connectButtons.length;
+            }
+        } else
+        {
+            // try 3 more times before saying no more connect buttons on this page
+            if (currentConnectMisses > 0)
+            {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+    
+                lastConnectTimeout = setTimeout(findConnectButton, connectTimeoutMS);
+    
+                currentConnectMisses--;
+            } else
+            {
+                goToNextPage();
+    
+                currentConnectMisses = connectMissesBeforeMovingToNextPage;
+            }
+        }
+    }
+    
+    
+    var findSendButton = () =>
+    {
+        let sendButtons = document.getElementsByClassName("ml1 artdeco-button");
+        if (sendButtons.length)
+        {
+            sendButtons[0].click();
+        } else
+        {
+            // try again after 300ms
+            lastSendTimeout = setTimeout(findSendButton, 300);
+        }
+    }
+    
+    var linkedin_search_regexp = /http[s]?:[/][/][a-zA-Z]+.linkedin.com[/]search[/]results/;
+    
+    if (window.location.href.match(linkedin_search_regexp) === null)
+    {
+        alert("Can't run Linkedin Autoconnect script on pages other than Linkedin Search Results");
+    } else
+    {
+        alert("Zoom out with Ctrl+Minus repeatedly until the Next page button is visible, before pressing OK");
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+        findConnectButton();
+    }
+    
+  </textarea>
+  <br />
+  <input id="bookmarklet_btn" type="button" value="Convert to bookmarklet" />
+  <br />
+  <textarea readonly style="display: none" name="output_bookmarklet_code" id="output_bookmarklet_code" cols="50"
+    rows="4"></textarea>
+
+  <p id="new_bookmarklet_msg" style="display: none">Delete the old bookmark, and Drag this new one:
+    <a id="new_bookmarklet_link" class="button" href="#" target="">
+      ⏩Linkedin Autoconnect
+    </a>
+  </p>
+
+</body>
+
+<script>
+  var input_js_textarea = document.getElementById("input_js_code");
+  var output_bookmarklet_textarea = document.getElementById("output_bookmarklet_code");
+  var new_bookmarklet_msg = document.getElementById("new_bookmarklet_msg");
+  var new_bookmarklet_link = document.getElementById("new_bookmarklet_link");
+
+  var LS_customized_js_code = "last_customized_js_code";
+  var LS_customized_bookmarklet = "last_customized_bookmarklet";
+
+  var last_customized_js_code = localStorage.getItem(LS_customized_js_code);
+  if (last_customized_js_code !== null)
+  {
+    input_js_textarea.value = last_customized_js_code;
+  }
+
+  var last_customized_bookmarklet = localStorage.getItem(LS_customized_bookmarklet);
+  if (last_customized_bookmarklet !== null)
+  {
+    output_bookmarklet_textarea.style.display = "block";
+    output_bookmarklet_textarea.value = last_customized_bookmarklet;
+    new_bookmarklet_msg.style.display = "block";
+    new_bookmarklet_link.href = last_customized_bookmarklet;
+  }
+
+  var handleBookmarkletBtnClick = (event) =>
+  {
+    event.preventDefault();
+    var customized_js_code = input_js_textarea.value.trim();
+
+    // Gracias: https://developers.google.com/closure/compiler/docs/api-tutorial1
+    var compile_endpoint_url = "https://closure-compiler.appspot.com/compile";
+    var compile_endpoint_data = {
+      js_code: customized_js_code,
+      compilation_level: "SIMPLE_OPTIMIZATIONS",
+      output_info: "compiled_code",
+      output_format: "json"
+    };
+    var compile_endpoint_options = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded",
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive"
+      },
+      body: Object.entries(compile_endpoint_data).map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`).join('&'),
+    };
+
+    var target = event.target;
+    target.disabled = true;
+    target.value = "Waiting ...";
+
+    output_bookmarklet_textarea.disabled = true;
+
+    new_bookmarklet_msg.style.display = "none";
+
+    localStorage.setItem(LS_customized_js_code, customized_js_code);
+
+    fetch(compile_endpoint_url, compile_endpoint_options)
+      .then(response => { return response.text(); })
+      .then(data =>
+      {
+        var json = data ? JSON.parse(data) : {};
+        var bookmarklet_code = "javascript:" + encodeURIComponent(json.compiledCode);
+
+        console.log("Success:", bookmarklet_code);
+
+        output_bookmarklet_textarea.value = bookmarklet_code;
+        new_bookmarklet_link.href = bookmarklet_code;
+        output_bookmarklet_textarea.style.display = "block";
+        new_bookmarklet_msg.style = "block";
+
+        target.disabled = false;
+        target.value = "Convert to bookmarklet";
+
+        output_bookmarklet_textarea.disabled = false;
+
+        localStorage.setItem(LS_customized_bookmarklet, bookmarklet_code);
+      })
+      .catch(error =>
+      {
+        console.log("Error:", error);
+
+        target.disabled = false;
+        target.value = "Convert to bookmarklet";
+      });
+  };
+
+
+  var bookmarklet_btn = document.getElementById("bookmarklet_btn");
+  bookmarklet_btn.addEventListener("click", handleBookmarkletBtnClick);
+
+
+</script>
+
 </html>

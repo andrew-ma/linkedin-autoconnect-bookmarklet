@@ -1,12 +1,15 @@
 var lastSendTimeout = null;
 var lastConnectTimeout = null;
 
-var useRandomConnectClickTime = false;
+var useRandomConnectClickTime = true;
 var connectMissesBeforeMovingToNextPage = 3;
 var currentConnectMisses = connectMissesBeforeMovingToNextPage;
 
-var minimumConnectWaitTime = 700;
-var maximumConnectWaitTime = 2000;
+var minimumConnectWaitTime = 1000;
+var maximumConnectWaitTime = 2500;
+
+var numTriesNextPage = 3;
+var curNumTriesNextPage = numTriesNextPage;
 
 var goToNextPage = () =>
 {
@@ -15,18 +18,25 @@ var goToNextPage = () =>
         behavior: 'smooth'
     });
 
+    if (curNumTriesNextPage <= 0)
+    {
+        alert("No Next button detected.  Rerun script after zooming out");
+        return;
+    }
+
     // click on next button
     let nextButtons = document.getElementsByClassName("artdeco-pagination__button--next");
     if (nextButtons.length)
     {
-        nextButtons[0].click();
-        console.log("Clicked next button");
+        curNumTriesNextPage = numTriesNextPage;
+        console.log("Click next button");
 
-        // 3 sec after clicking next button
-        setTimeout(findConnectButton, 300);
+        nextButtons[0].click();
+
+        setTimeout(findConnectButton, minimumConnectWaitTime);
     } else
     {
-        console.log("No Next button");
+        curNumTriesNextPage--;
     }
 };
 
@@ -47,7 +57,6 @@ var findConnectButton = () =>
     let connectTimeoutMS = 700;
     if (useRandomConnectClickTime)
     {
-        // range of number between 500ms to 1s, so width of range == 500, and start number = 500
         connectTimeoutMS = Math.floor(Math.random() * (maximumConnectWaitTime - minimumConnectWaitTime) + 1) + minimumConnectWaitTime;
     }
 
@@ -65,7 +74,7 @@ var findConnectButton = () =>
         {
             // stop clicking on connect buttons if we reach our weekly connect limit
             clearTimeout(lastConnectTimeout);
-            alert("Reached Connect Invitation Limit!");
+            alert("Reached Connect Invitation Limit! Stopped script");
             return;
         }
 
@@ -88,7 +97,7 @@ var findConnectButton = () =>
             lastConnectButtonsLength = null;
         } else
         {
-            // look and click on next Connect button after 700ms
+            // look and click on next Connect button after connectTimeoutMS
             lastConnectTimeout = setTimeout(findConnectButton, connectTimeoutMS);
 
             curNumTriesConnectStaySame--;
@@ -110,7 +119,6 @@ var findConnectButton = () =>
             currentConnectMisses--;
         } else
         {
-            // let goToNextPage = confirm("No more Connect buttons. Go to next page");
             goToNextPage();
 
             currentConnectMisses = connectMissesBeforeMovingToNextPage;
@@ -132,5 +140,17 @@ var findSendButton = () =>
     }
 }
 
+var linkedin_search_regexp = /http[s]?:[/][/][a-zA-Z]+.linkedin.com[/]search[/]results/;
 
-findConnectButton();
+if (window.location.href.match(linkedin_search_regexp) === null)
+{
+    alert("Can't run Linkedin Autoconnect script on pages other than Linkedin Search Results");
+} else
+{
+    alert("Zoom out with Ctrl+Minus repeatedly until the Next page button is visible, before pressing OK");
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+    findConnectButton();
+}
